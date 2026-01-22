@@ -1238,6 +1238,11 @@ app.put('/api/labs/bookings/:bookingId/status', auth, async (req, res) => {
   }
 });
 
+// Simple health check for Nimbus
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
 // Health check with Gemini test
 app.get('/api/health-check', async (req, res) => {
   const geminiStatus = process.env.GEMINI_API_KEY ? 'Configured ✅' : 'Not configured ❌';
