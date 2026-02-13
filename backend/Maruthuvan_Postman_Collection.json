@@ -1,0 +1,270 @@
+{
+  "info": {
+    "name": "Maruthuvan Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000"
+    },
+    {
+      "key": "token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Simple Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/health"
+          }
+        },
+        {
+          "name": "Detailed Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/health-check"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Send OTP",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mobile\": \"9876543210\", \"language\": \"ta\"}"
+            },
+            "url": "{{baseUrl}}/api/auth/send-otp"
+          }
+        },
+        {
+          "name": "Verify OTP",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"mobile\": \"9876543210\", \"otp\": \"121221\", \"name\": \"Test User\", \"language\": \"ta\"}"
+            },
+            "url": "{{baseUrl}}/api/auth/verify-otp"
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Services",
+      "item": [
+        {
+          "name": "Symptom Check",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"symptoms\": [{\"symptom\": \"fever\", \"severity\": \"high\", \"duration\": \"3 days\"}, {\"symptom\": \"headache\", \"severity\": \"medium\", \"duration\": \"2 days\"}], \"language\": \"en\", \"mobile\": \"9876543210\"}"
+            },
+            "url": "{{baseUrl}}/api/ai/symptom-check"
+          }
+        },
+        {
+          "name": "AI Chat",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"message\": \"What are the symptoms of diabetes?\", \"language\": \"en\", \"mobile\": \"9876543210\"}"
+            },
+            "url": "{{baseUrl}}/api/ai/chat"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Consultation",
+      "item": [
+        {
+          "name": "Get Hospitals",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/consult/hospitals"
+          }
+        },
+        {
+          "name": "Get Doctors",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {
+              "raw": "{{baseUrl}}/api/consult/doctors?hospitalId=HOSPITAL_ID_HERE",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "consult", "doctors"],
+              "query": [{"key": "hospitalId", "value": "HOSPITAL_ID_HERE"}]
+            }
+          }
+        },
+        {
+          "name": "Create Consultation Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"doctorId\": \"DOCTOR_ID_HERE\", \"hospitalId\": \"HOSPITAL_ID_HERE\", \"scheduledDate\": \"2024-01-20T10:00:00Z\", \"timeSlot\": \"10:00 AM - 11:00 AM\", \"symptoms\": \"Fever and headache\"}"
+            },
+            "url": "{{baseUrl}}/api/consult/request"
+          }
+        },
+        {
+          "name": "Get My Requests",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/consult/my-requests"
+          }
+        }
+      ]
+    },
+    {
+      "name": "SOS",
+      "item": [
+        {
+          "name": "Trigger SOS",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"location\": {\"latitude\": 13.0827, \"longitude\": 80.2707, \"address\": \"Chennai, Tamil Nadu\"}, \"emergencyType\": \"medical\", \"description\": \"Emergency medical help needed\", \"language\": \"en\"}"
+            },
+            "url": "{{baseUrl}}/api/sos/trigger"
+          }
+        },
+        {
+          "name": "Get SOS History",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/sos/history"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lab Tests",
+      "item": [
+        {
+          "name": "Get All Tests",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/labs/tests"
+          }
+        },
+        {
+          "name": "Get All Labs",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/labs/labs"
+          }
+        },
+        {
+          "name": "Get Districts",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": "{{baseUrl}}/api/labs/districts"
+          }
+        },
+        {
+          "name": "Book Lab Test",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"testId\": \"TEST_ID_HERE\", \"labId\": \"LAB_ID_HERE\", \"bookingDate\": \"2024-01-20\", \"timeSlot\": \"10:00 AM\", \"sampleType\": \"home\", \"patientDetails\": {\"patientName\": \"Test User\", \"age\": 30, \"gender\": \"Male\", \"phoneNumber\": \"9876543210\", \"address\": \"Chennai, Tamil Nadu\"}}"
+            },
+            "url": "{{baseUrl}}/api/labs/book"
+          }
+        },
+        {
+          "name": "Confirm Payment",
+          "request": {
+            "method": "POST",
+            "header": [
+              {"key": "Content-Type", "value": "application/json"},
+              {"key": "Authorization", "value": "Bearer {{token}}"}
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"bookingId\": \"BOOKING_ID_HERE\"}"
+            },
+            "url": "{{baseUrl}}/api/labs/confirm-payment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Videos",
+      "item": [
+        {
+          "name": "Get Videos (Tamil)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/videos?language=ta",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health", "videos"],
+              "query": [{"key": "language", "value": "ta"}]
+            }
+          }
+        },
+        {
+          "name": "Get Videos (English)",
+          "request": {
+            "method": "GET",
+            "header": [{"key": "Authorization", "value": "Bearer {{token}}"}],
+            "url": {
+              "raw": "{{baseUrl}}/api/health/videos?language=en",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health", "videos"],
+              "query": [{"key": "language", "value": "en"}]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
