@@ -1,8 +1,9 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function VideoSessionPage() {
+function VideoSessionContent() {
   const params = useSearchParams();
   const doctorId = params.get("doctorId");
 
@@ -16,5 +17,13 @@ export default function VideoSessionPage() {
         Video Call Placeholder 🎥
       </div>
     </div>
+  );
+}
+
+export default function VideoSessionPage() {
+  return (
+    <Suspense fallback={<div className="p-4 flex min-h-screen items-center justify-center">Loading consultation...</div>}>
+      <VideoSessionContent />
+    </Suspense>
   );
 }
