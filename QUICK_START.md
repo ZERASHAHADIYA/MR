@@ -38,7 +38,7 @@
 
 ### Backend (Terminal 1):
 ```bash
-cd MARUTHUVAN/backend
+cd MR/backend
 npm install
 npm start
 ```
@@ -46,7 +46,8 @@ Backend runs on: http://localhost:5000
 
 ### Frontend (Terminal 2):
 ```bash
-cd MARUTHUVAN/frontend
+cd MR/frontend
+npm install
 npm run dev
 ```
 Frontend runs on: http://localhost:3000
@@ -91,7 +92,7 @@ Frontend runs on: http://localhost:3000
 
 ### Option 1: MongoDB Compass
 1. Download MongoDB Compass
-2. Connect to: `mongodb+srv://zzera1153_db_user:zerashahadiya@cluster0.0yjcpvj.mongodb.net/maruthuvan`
+2. Connect to your local MongoDB database: `mongodb://127.0.0.1:27017/maruthuvan`
 3. View collections:
    - `users` - All registered users
    - `sos` - Emergency alerts

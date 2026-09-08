@@ -110,7 +110,7 @@ When server starts successfully, you should see:
 Your `.env` file now uses:
 ```env
 MONGODB_URI=mongodb://localhost:27017/maruthuvan
-GEMINI_API_KEY=AIzaSyDvMBba1Hbcb0_1o3FI9aUyuy41imuZSCo
+GEMINI_API_KEY=your-gemini-api-key
 ```
 
 ## 🧪 Test Endpoints

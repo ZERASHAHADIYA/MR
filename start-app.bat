@@ -1,15 +1,16 @@
 @echo off
+set "ROOT=%~dp0"
 echo ========================================
 echo Starting Maruthuvan Application
 echo ========================================
 echo.
 
 echo [1/2] Starting Backend Server (Port 5000)...
-start "Maruthuvan Backend" cmd /k "cd /d c:\Users\HP\OneDrive\Documents\MARUTHUVAN\backend && node server.js"
+start "Maruthuvan Backend" /D "%ROOT%backend" cmd /k npm start
 timeout /t 3 /nobreak >nul
 
 echo [2/2] Starting Frontend (Port 3000)...
-start "Maruthuvan Frontend" cmd /k "cd /d c:\Users\HP\OneDrive\Documents\MARUTHUVAN\frontend && npm run dev"
+start "Maruthuvan Frontend" /D "%ROOT%frontend" cmd /k npm run dev
 
 echo.
 echo ========================================

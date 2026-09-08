@@ -1,7 +1,7 @@
 # 🚀 MARUTHUVAN - Complete Setup & Running Guide
 
 ## 📋 Prerequisites
-- Node.js (v16+)
+- Node.js (v20.9+)
 - MongoDB (local or Atlas)
 - Git
 
@@ -11,18 +11,14 @@
 
 ```bash
 # Navigate to backend directory
-cd MARUTHUVAN/backend
+cd MR/backend
 
 # Install dependencies
 npm install
 
-# Verify .env file has these keys:
-# MONGODB_URI=mongodb+srv://zzera1153_db_user:zerashahadiya@cluster0.0yjcpvj.mongodb.net/maruthuvan
-# JWT_SECRET=e435271afd0dc7d69e1d99ade0177759897bd797542c8055e31699d611dc093d
-# GEMINI_API_KEY=AIzaSyDCO4dv64NocT5K9Rexww_3BtPxge3gNCg
-# YOUTUBE_API_KEY=AIzaSyAXeTCJmTRyO7rJcbcm_CPwazMyHB2AFtY
-# PORT=5000
-# FRONTEND_URL=http://localhost:3000
+# Create your local environment file from the safe template:
+copy .env.example .env
+# Then add your own MongoDB/API credentials to .env.
 
 # Start backend server
 npm start
@@ -35,7 +31,7 @@ npm start
 ```bash
 # Open NEW terminal
 # Navigate to frontend directory
-cd MARUTHUVAN/frontend
+cd MR/frontend
 
 # Install dependencies (if not already done)
 npm install
@@ -106,7 +102,7 @@ Should show:
 
 ### MongoDB Compass
 1. Download: https://www.mongodb.com/try/download/compass
-2. Connect: `mongodb+srv://zzera1153_db_user:zerashahadiya@cluster0.0yjcpvj.mongodb.net/maruthuvan`
+2. Connect to your configured MongoDB database, for example: `mongodb://127.0.0.1:27017/maruthuvan`
 3. View collections:
    - `users` - Registered users
    - `sos` - Emergency alerts

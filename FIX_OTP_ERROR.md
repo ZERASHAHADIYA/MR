@@ -7,7 +7,7 @@ The backend is working! The issue is the **frontend is not running**.
 ### Start Both Backend & Frontend:
 
 ```cmd
-cd c:\Users\HP\OneDrive\Documents\MARUTHUVAN
+cd MR
 start-app.bat
 ```
 
@@ -15,13 +15,13 @@ OR manually:
 
 **Terminal 1 - Backend:**
 ```cmd
-cd c:\Users\HP\OneDrive\Documents\MARUTHUVAN\backend
+cd MR\backend
 node server.js
 ```
 
 **Terminal 2 - Frontend:**
 ```cmd
-cd c:\Users\HP\OneDrive\Documents\MARUTHUVAN\frontend
+cd MR\frontend
 npm run dev
 ```
 
