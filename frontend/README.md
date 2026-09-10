@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Maruthuvan - AI Healthcare Platform
 
 Maruthuvan is an AI-powered rural healthcare and telemedicine platform designed to bridge the healthcare gap in rural communities.
@@ -11,7 +10,7 @@ Maruthuvan is an AI-powered rural healthcare and telemedicine platform designed 
 - Emergency SOS System
 - Multi-language Support (Tamil & English)
 
-## Getting Started
+## Local Development
 
 First, run the development server:
 
@@ -26,6 +25,16 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+The frontend calls the backend through `NEXT_PUBLIC_API_URL`. If it is not set, local development uses `http://localhost:5000`.
+
+For a hosted backend, set this environment variable in Vercel:
+
+```env
+NEXT_PUBLIC_API_URL=https://your-backend.example.com
+```
+
+Use the backend origin only. The application adds `/api` automatically.
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
@@ -45,6 +54,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# MR
->>>>>>> 8c9504d4b09c436e32521cde6834075a20c15363
