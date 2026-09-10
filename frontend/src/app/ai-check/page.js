@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LiquidEther from '@/components/ui/LiquidEther';
 import Ribbons from '@/components/Ribbons';
 import { SymptomCheckerForm } from '@/components/SymptomChecker';
+import { API_BASE_URL } from '@/lib/api';
 
 const BubbleMenu = ({ onSelect, language }) => {
   const options = [
@@ -171,7 +172,7 @@ const AISymptomChecker = () => {
 
     try {
       // API call to backend LLM endpoint
-      const response = await fetch('http://localhost:5000/api/ai/chat', {
+      const response = await fetch(`${API_BASE_URL}/ai/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

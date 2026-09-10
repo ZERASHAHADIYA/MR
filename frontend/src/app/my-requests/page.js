@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import LiquidEther from '@/components/ui/LiquidEther';
 import Ribbons from '@/components/Ribbons';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function MyRequestsPage() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function MyRequestsPage() {
   const fetchMyRequests = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/consult/my-requests', {
+      const response = await fetch(`${API_BASE_URL}/consult/my-requests`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import LiquidEther from '@/components/ui/LiquidEther';
 import Ribbons from '@/components/Ribbons';
+import { API_BASE_URL } from '@/lib/api';
 
 const UngalNalamPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState(null);
@@ -20,7 +21,7 @@ const UngalNalamPage = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/health/videos?language=${selectedLanguage === 'tamil' ? 'ta' : 'en'}`, {
+      const response = await fetch(`${API_BASE_URL}/health/videos?language=${selectedLanguage === 'tamil' ? 'ta' : 'en'}`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }

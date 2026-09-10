@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import MedicalOrbitBackground from "@/components/MedicalOrbitBackground";
 import Ribbons from "@/components/Ribbons";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function AuthPage() {
   const [step, setStep] = useState("aadhar"); // aadhar | otp
@@ -44,7 +45,7 @@ export default function AuthPage() {
       // Use last 10 digits of Aadhar as mobile number for OTP
       const mobile = aadhar.slice(-10);
       
-      const response = await fetch('http://localhost:5000/api/auth/send-otp', {
+      const response = await fetch(`${API_BASE_URL}/auth/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mobile: mobile, language: 'ta' })
@@ -79,7 +80,7 @@ export default function AuthPage() {
     try {
       const mobile = aadhar.slice(-10);
       
-      const response = await fetch('http://localhost:5000/api/auth/verify-otp', {
+      const response = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 

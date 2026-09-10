@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import LiquidEther from '@/components/ui/LiquidEther';
 import Ribbons from '@/components/Ribbons';
+import { API_BASE_URL } from '@/lib/api';
 
 const MapComponent = dynamic(() => import('@/components/MapComponent'), { ssr: false });
 
@@ -39,7 +40,7 @@ const ConsultPage = () => {
   const fetchHospitals = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/consult/hospitals', {
+      const response = await fetch(`${API_BASE_URL}/consult/hospitals`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -52,7 +53,7 @@ const ConsultPage = () => {
   const fetchDoctors = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/consult/doctors?hospitalId=${selectedHospital._id}`, {
+      const response = await fetch(`${API_BASE_URL}/consult/doctors?hospitalId=${selectedHospital._id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -446,7 +447,7 @@ const ConsultPage = () => {
                   onClick={async () => {
                     try {
                       const token = localStorage.getItem('token');
-                      const response = await fetch('http://localhost:5000/api/consult/request', {
+                      const response = await fetch(`${API_BASE_URL}/consult/request`, {
                         method: 'POST',
                         headers: {
                           'Content-Type': 'application/json',

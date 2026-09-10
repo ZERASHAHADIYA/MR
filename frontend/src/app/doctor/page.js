@@ -7,6 +7,7 @@ import apiClient from '@/lib/api';
 import { useLanguage } from '@/hooks/useLanguage';
 import LiquidEther from '@/components/ui/LiquidEther';
 import Ribbons from '@/components/Ribbons';
+import { API_BASE_URL } from '@/lib/api';
 
 export default function DoctorPanelPage() {
   const router = useRouter();
@@ -30,7 +31,7 @@ export default function DoctorPanelPage() {
   const fetchRequests = async () => {
     try {
       // For demo: fetch all pending requests (no doctorId filter)
-      const response = await fetch('http://localhost:5000/api/doctor/requests', {
+      const response = await fetch(`${API_BASE_URL}/doctor/requests`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
       });
       const data = await response.json();
